@@ -8,13 +8,13 @@
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #f7f9fc; /* Light Trip.com-ish background */
+      background-color: #f7f9fc;
       margin: 0;
       padding: 0;
     }
 
     header {
-      background-color: #0072ce; /* Trip.com blue */
+      background-color: #0072ce;
       color: white;
       padding: 20px;
       text-align: center;
@@ -36,6 +36,7 @@
       display: flex;
       margin-bottom: 20px;
       border-bottom: 2px solid #ddd;
+      flex-wrap: wrap;
     }
 
     .tab {
@@ -45,6 +46,7 @@
       border-top-right-radius: 5px;
       background-color: #eaf1fb;
       margin-right: 5px;
+      margin-bottom: 5px;
       font-weight: 500;
       color: #0072ce;
     }
@@ -62,7 +64,7 @@
       border: 2px solid #ddd;
       border-top: none;
       border-radius: 0 0 5px 5px;
-      text-align: center; /* center dashboards */
+      text-align: center;
     }
 
     .tab-content.active {
@@ -90,6 +92,7 @@
       <div class="tab" data-tab="porter">Porter's Five</div>
       <div class="tab" data-tab="vrio">VRIO</div>
       <div class="tab" data-tab="pestel">PESTEL</div>
+      <div class="tab" data-tab="survey">Survey</div>
     </div>
 
     <!-- Tab Contents -->
@@ -116,6 +119,15 @@
       <p>Political, Economic, Social, Technological, Environmental, and Legal factors affecting Trip.com.</p>
       <img src="charts/PESTEL.png" class="chart" alt="PESTEL Chart">
     </div>
+
+    <div id="survey" class="tab-content">
+      <h2>Survey Demographics & Insights</h2>
+      <p>Visualizations showing Trip.com survey respondents' demographics, income, age group, and other responses.</p>
+      <!-- Example charts -->
+      <img src="charts/salary.png" class="chart" alt="Salary Distribution">
+      <img src="charts/agegroup.png" class="chart" alt="Age Group Distribution">
+      <img src="charts/platforms.png" class="chart" alt="Preferred Platforms">
+    </div>
   </div>
 
   <script>
@@ -124,11 +136,9 @@
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        // Remove active from all tabs
         tabs.forEach(t => t.classList.remove('active'));
         contents.forEach(c => c.classList.remove('active'));
 
-        // Add active to clicked tab and corresponding content
         tab.classList.add('active');
         document.getElementById(tab.dataset.tab).classList.add('active');
       });
